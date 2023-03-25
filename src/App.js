@@ -148,12 +148,12 @@ function App() {
             {/* <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0"></img> */}
             <a href='https://photos.app.goo.gl/aCCxXUJyc1jcuykGA'>My clay creation</a>
           </li>
-          
+
           <li className="flex text-sm my-4 dark:text-white items-center">
             <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
             <a href='https://www.instagram.com/plum_friends/'>@plum_friends</a>
           </li>
-          
+
           <li className="flex text-sm my-4 dark:text-white items-center">
             <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
             <a href='https://www.instagram.com/abiju_bear_ma/'>@abiju_bear_ma</a>
@@ -269,39 +269,97 @@ function App() {
           <p className="sm:text-3xl text-2-xl my-4 font-black dark:text-white">Program Language</p>
           {/* <hr className="w-full h-0.5 mx-auto bg-stone-200 border-0 rounded md:mb-10 dark:bg-stone-800"></hr> */}
 
-          <div className='sm:text-lg sm:mb-0 mb-4 text-sm grid sm:grid-cols-3 grid-cols-2 gap-4'>
-            <p className="dark:text-white">HTML5</p>
-            <p className="dark:text-white">CSS</p>
-            <p className="dark:text-white">JavaScript</p>
-            <p className="dark:text-white">SQL</p>
-            <p className="dark:text-white">PHP</p>
-            <p className="dark:text-white">Python</p>
+          <div className='sm:text-lg sm:mb-0 mb-8 text-sm grid grid-cols-3 gap-4'>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_html.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">HTML5</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_css.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">CSS</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_javascript.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">JavaScript</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_mysql.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">SQL</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_php.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">PHP</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_python.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Python</a>
+            </div>
           </div>
 
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
           <p className="sm:text-3xl text-2-xl my-4 font-black dark:text-white">Software</p>
           {/* <hr className="w-full h-0.5 mx-auto bg-stone-200 border-0 rounded md:mb-10 dark:bg-stone-800"></hr> */}
 
-          <div className='sm:text-lg sm:mb-0 mb-4 text-sm grid sm:grid-cols-3 grid-cols-2 gap-4'>
-            <p className="dark:text-white">Zbrush</p>
-            <p className="dark:text-white">3DsMax</p>
-            <p className="dark:text-white">Blender</p>
-            <p className="dark:text-white">Photoshop</p>
-            <p className="dark:text-white">PowerPoint</p>
-            <p className="dark:text-white">Canva</p>
-            <p className="dark:text-white">Illustrator</p>
-            <p className="dark:text-white">Visual Studio Code</p>
+          <div className='sm:text-lg sm:mb-0 mb-8 text-sm grid grid-cols-3 gap-4'>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_zbrush.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Zbrush</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_3Ds-max.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">3DsMax</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_blender.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Blender</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_photoshop.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Photoshop</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_illustrator.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Illustrator</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_premiere.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Premiere Pro</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_powerpoint.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">PowerPoint</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_canva.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Canva</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_visual-studio-code.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Visual Studio Code</a>
+            </div>
           </div>
 
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
           <p className="sm:text-3xl text-2-xl my-4 font-black dark:text-white">Plugin Tool</p>
           {/* <hr className="w-full h-0.5 mx-auto bg-stone-200 border-0 rounded md:mb-10 dark:bg-stone-800"></hr> */}
 
-          <div className='sm:text-lg sm:mb-0 mb-4 text-sm grid sm:grid-cols-3 grid-cols-2 gap-4'>
-            <p className="dark:text-white">TailwindCSS</p>
-            <p className="dark:text-white">ant-Design</p>
-            <p className="dark:text-white">Bootstrap</p>
-            <p className="dark:text-white">FlowBite</p>
+          <div className='sm:text-lg sm:mb-0 mb-8 text-sm grid grid-cols-3 gap-4'>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_tailwindcss.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">TailwindCSS</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_ant-design.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">ant-Design</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_bootstrap.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">Bootstrap</a>
+            </div>
+            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+              <img src='./logo/logos_FlowBite.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+              <a className="dark:text-white sm:contents hidden">FlowBite</a>
+            </div>
           </div>
         </div>
       </div>
