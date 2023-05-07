@@ -5,9 +5,10 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import InfoPage from "./InfoPage";
-import AchievementsPage from "./AchievementsPage";
-// import BearPage from "./BearPage";
+import InfoPage from "./Page/InfoPage";
+import AchievementsPage from "./Page/AchievementsPage";
+import BearPage from "./Page/BearPage";
+import NotFoundPage from "./Page/NotFoundPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,10 +19,10 @@ root.render(
     <Routes>
       {/* <Route path="/" element={<Login />} /> */}
       <Route path="/" element={<App />} />
-      {/* <Route path="/info" element={<InfoPage />} /> */}
+      <Route path="/info" element={<InfoPage />} />
       <Route path="/achievements" element={<AchievementsPage />} />
-      {/* <Route path="/about-bear" element={<BearPage />} /> */}
-      <Route path="*" element={<h1>404 Page Not Found</h1>} />
+      <Route path="/about-bear" element={<BearPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </BrowserRouter>
 );
