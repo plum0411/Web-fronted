@@ -1,5 +1,5 @@
 import { Disclosure } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -12,8 +12,8 @@ const navigation = [
 
 function Header() {
   localStorage.getItem('access_token')
-  // const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('access_token'));
   const [isLoggedIn, setIsLoggedIn] = useState();
+  const [user, setUser] = useState();
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
   }
@@ -26,11 +26,13 @@ function Header() {
         },
       });
       setIsLoggedIn(true);
+      setUser(response.data);
       console.log('使用者資料：', response.data);
+      console.log('使用者資料：', response.data.name);
     } catch (error) {
       setIsLoggedIn(false);
       console.log('isLoggedIn:', isLoggedIn);
-      console.error('嘗試取得使用者資料失敗:', error.response.data);
+      console.error('使用者未登入:', error.response.data);
     }
   };
 
@@ -46,7 +48,6 @@ function Header() {
         }
       );
       console.log('已登出:', response.data);
-      localStorage.setItem('access_token', '');
       setIsLoggedIn(false);
     } catch (error) {
       console.error('登出失敗:', error.response.data);
@@ -109,16 +110,27 @@ function Header() {
                   </div>
                 </div>
                 {isLoggedIn ? (
-                  <div className="flex flex-1 justify-end">
-                    <a onClick={handleLogout} className="text-sm font-semibold leading-6 dark:text-white text-amber-600">
-                      Logout
+                  <div className="flex justify-end space-x-2 hover:animate-swing hover:bg-red-500/50 py-2 px-3 rounded transition-colors">
+                    <a onClick={handleLogout} className="text-sm font-semibold leading-6 dark:text-white text-amber-600 cursor-pointer">
+                      {user.name}
                     </a>
+                    <div className='w-6 h-6 text-white'>
+                      <ArrowRightOnRectangleIcon />
+                    </div>
                   </div>
                 ) : (
-                  <div className="flex flex-1 justify-end">
-                    <a href="./login" className="text-sm font-semibold leading-6 dark:text-white text-amber-600">
-                      Login <span aria-hidden="true">&rarr;</span>
+                  <div className=" space-x-2 flex justify-end">
+                    <a href="/login" className="text-sm font-semibold leading-6 dark:text-white text-amber-600 hover:bg-amber-600/30 py-2 px-3 rounded transition-colors">
+                      Login
                     </a>
+                    <div className="flex items-center space-x-1 text-sm font-semibold leading-6 text-amber-800 hover:text-amber-700 bg-white/75 hover:bg-white py-2 px-3 rounded transition-colors">
+                      <a href="/register">
+                        Register
+                      </a>
+                      <div className='w-4 h-4 text-amber-600'>
+                        <ArrowRightIcon />
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
