@@ -11,12 +11,35 @@ const navigation = [
 ];
 
 function Header() {
-  localStorage.getItem('access_token')
+  const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [user, setUser] = useState();
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
   }
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ');
+  }
+
+  const handleAnonymousLogin = async () => {
+
+    const email = "anonymous@example.com";
+    const password = "password";
+
+    try {
+      const response = await axios.post('http://localhost:8000/api/auth/login/', {
+        email,
+        password,
+      });
+
+      localStorage.setItem('access_token', response.data.access_token);
+      localStorage.setItem('user_data', response.data);
+      console.log('匿名:', response.data);
+      console.log('匿名token:', localStorage.getItem('access_token'));
+    } catch (error) {
+      console.error('error', error.response.data);
+    }
+  };
 
   const getMe = async () => {
     try {
@@ -28,8 +51,8 @@ function Header() {
       setIsLoggedIn(true);
       setUser(response.data);
       console.log('使用者資料：', response.data);
-      console.log('使用者資料：', response.data.name);
     } catch (error) {
+      handleAnonymousLogin();
       setIsLoggedIn(false);
       console.log('isLoggedIn:', isLoggedIn);
       console.error('使用者未登入:', error.response.data);
@@ -47,14 +70,17 @@ function Header() {
           },
         }
       );
-      console.log('已登出:', response.data);
+      handleAnonymousLogin();
       setIsLoggedIn(false);
+      console.log('已登出:', response.data);
+      navigate('/');
     } catch (error) {
       console.error('登出失敗:', error.response.data);
     }
   };
 
   useEffect(() => {
+    handleAnonymousLogin();
     getMe();
   }, []);
 
@@ -109,7 +135,7 @@ function Header() {
                     </div>
                   </div>
                 </div>
-                {isLoggedIn ? (
+                {isLoggedIn && user.id != 99999 ? (
                   <div className="flex justify-end space-x-2 hover:animate-swing hover:bg-red-500/50 py-2 px-3 rounded transition-colors">
                     <a onClick={handleLogout} className="text-sm font-semibold leading-6 dark:text-white text-amber-600 cursor-pointer">
                       {user.name}

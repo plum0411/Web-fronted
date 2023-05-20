@@ -40,7 +40,6 @@ function LoginForm() {
       // 根據回應處理登入成功的情況
       console.log('登入成功:', response.data);
       localStorage.setItem('access_token', response.data.access_token);
-      localStorage.getItem('access_token');
       localStorage.setItem('user_data', response.data);
       console.log('token:', localStorage.getItem('access_token'));
       navigate('/messageBoard');

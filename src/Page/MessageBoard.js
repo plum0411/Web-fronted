@@ -9,8 +9,24 @@ const MessageBoard = () => {
     const [authUserId, setAuthUserId] = useState(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedPostId, setSelectedPostId] = useState(null);
+    const [user, setUser] = useState();
+
+    const getMe = async () => {
+        try {
+            const response = await axios.post('http://localhost:8000/api/auth/me', null, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            });
+            setUser(response.data);
+            console.log('使用者資料：', response.data);
+        } catch (error) {
+            console.error('使用者未登入:', error.response.data);
+        }
+    };
 
     useEffect(() => {
+        getMe();
         fetchAuthUserId();
         getPosts();
     }, []);
@@ -152,7 +168,7 @@ const MessageBoard = () => {
                                             <small className="text-sm text-gray-600"> · edited</small>
                                         )}
                                     </div>
-                                    {(post.user_id === authUserId || !authUserId) && (
+                                    {(post.user_id === authUserId || authUserId === null) && post.user_id !== 99999 && (
                                         <div className="relative inline-block text-left">
                                             <button className="focus:outline-none w-6 h-6 text-gray-400 hover:text-gray-600" type="button" onClick={() => toggleDropdown(post.id)}>
                                                 <EllipsisHorizontalIcon />
