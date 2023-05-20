@@ -127,7 +127,7 @@ function LoginForm() {
               Forgot your password?
             </Link>} */}
             <a
-              href="./register"
+              href="/register"
               className="underline text-sm dark:text-gray-600 dark:hover:text-gray-400 text-gray-600 hover:text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
             >
               Haven't register yet?
