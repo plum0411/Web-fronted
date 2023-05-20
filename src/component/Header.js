@@ -1,17 +1,62 @@
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const navigation = [
   { name: 'info', href: './info', current: "" },
   { name: 'achievements', href: './achievements', current: "" },
-  { name: 'about bear', href: './about-bear', current: "" },
+  { name: 'message board', href: './messageBoard', current: "" },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+function Header() {
+  localStorage.getItem('access_token')
+  // const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('access_token'));
+  const [isLoggedIn, setIsLoggedIn] = useState();
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ');
+  }
 
-function App() {
+  const getMe = async () => {
+    try {
+      const response = await axios.post('http://localhost:8000/api/auth/me', null, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+        },
+      });
+      setIsLoggedIn(true);
+      console.log('使用者資料：', response.data);
+    } catch (error) {
+      setIsLoggedIn(false);
+      console.log('isLoggedIn:', isLoggedIn);
+      console.error('嘗試取得使用者資料失敗:', error.response.data);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/api/auth/logout',
+        null,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+          },
+        }
+      );
+      console.log('已登出:', response.data);
+      localStorage.setItem('access_token', '');
+      setIsLoggedIn(false);
+    } catch (error) {
+      console.error('登出失敗:', error.response.data);
+    }
+  };
+
+  useEffect(() => {
+    getMe();
+  }, []);
+
   return (
     <div className="App font-poppins m-0 p-0 fixed top-0 left-0 right-0 z-50">
       <Disclosure as="div" className="bg-yellow-800">
@@ -44,6 +89,7 @@ function App() {
                       />
                     </a>
                   </div>
+
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
                       {navigation.map(item => (
@@ -62,6 +108,19 @@ function App() {
                     </div>
                   </div>
                 </div>
+                {isLoggedIn ? (
+                  <div className="flex flex-1 justify-end">
+                    <a onClick={handleLogout} className="text-sm font-semibold leading-6 dark:text-white text-amber-600">
+                      Logout
+                    </a>
+                  </div>
+                ) : (
+                  <div className="flex flex-1 justify-end">
+                    <a href="./login" className="text-sm font-semibold leading-6 dark:text-white text-amber-600">
+                      Login <span aria-hidden="true">&rarr;</span>
+                    </a>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -89,5 +148,4 @@ function App() {
     </div>
   );
 }
-
-export default App;
+export default Header;
