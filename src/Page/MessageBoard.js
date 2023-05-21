@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ChatBubbleOvalLeftEllipsisIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import Header from '../component/Header';
+
 const MessageBoard = () => {
     const [posts, setPosts] = useState([]);
     const [message, setMessage] = useState('');
@@ -10,6 +11,13 @@ const MessageBoard = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedPostId, setSelectedPostId] = useState(null);
     const [user, setUser] = useState();
+    const [editingPostId, setEditingPostId] = useState(null);
+
+    useEffect(() => {
+        getMe();
+        fetchAuthUserId();
+        getPosts();
+    }, []);
 
     const getMe = async () => {
         try {
@@ -25,12 +33,6 @@ const MessageBoard = () => {
         }
     };
 
-    useEffect(() => {
-        getMe();
-        fetchAuthUserId();
-        getPosts();
-    }, []);
-
     const getPosts = async () => {
         try {
             const response = await axios.get('http://localhost:8000/api/posts/', {
@@ -38,7 +40,7 @@ const MessageBoard = () => {
                     Authorization: `Bearer ${localStorage.getItem('access_token')}`,
                 },
             });
-            setPosts(response.data.data.posts);//.filter(post => post.user_id === authUserId)
+            setPosts(response.data.data.posts);
         } catch (error) {
             console.error(error);
         }
@@ -62,9 +64,7 @@ const MessageBoard = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-
-        // Check if the user is logged in or anonymous
-        const user_id = authUserId || 99999; // Replace with the actual user ID
+        const user_id = authUserId || 99999;
         const url = `http://localhost:8000/api/posts/`;
 
         axios
@@ -116,14 +116,9 @@ const MessageBoard = () => {
         })
             .then((response) => response.json())
             .then((data) => {
-                // Access the user's ID from the response data
-                const userID = data.id;
-
-                // Use the user's ID or perform other actions with the data
-                setAuthUserId(userID);
+                setAuthUserId(data.id);
             })
             .catch((error) => {
-                // Handle any errors
                 console.error(error);
             });
     };
@@ -131,6 +126,42 @@ const MessageBoard = () => {
     const toggleDropdown = (postId) => {
         setIsDropdownOpen(!isDropdownOpen);
         setSelectedPostId(postId);
+    };
+
+    const handleEditPost = (postId) => {
+        setEditingPostId(postId);
+    };
+
+    const handleCancelEdit = () => {
+        setEditingPostId(null);
+    };
+
+    const handleUpdatePost = (event, postId) => {
+        event.preventDefault();
+
+        axios
+            .put(
+                `http://localhost:8000/api/posts/${postId}`,
+                { content: message },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                    },
+                }
+            )
+            .then((response) => {
+                setMessage('');
+                setErrors([]);
+                setEditingPostId(null);
+                getPosts();
+            })
+            .catch((error) => {
+                if (error.response && error.response.data.errors) {
+                    setErrors(error.response.data.errors);
+                } else {
+                    console.error(error);
+                }
+            });
     };
 
     return (
@@ -157,12 +188,15 @@ const MessageBoard = () => {
                 <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
                     {posts.map((post) => (
                         <div key={post.id} className="p-6 flex space-x-2">
-                            <div className='w-6 h-6 text-amber-700'>
+                            <div className="w-6 h-6 text-amber-700">
                                 <ChatBubbleOvalLeftEllipsisIcon />
                             </div>
                             <div className="flex-1">
                                 <div className="flex justify-between items-start">
                                     <div>
+                                        <span className={post.user_id === 99999 ? 'font-bold text-gray-700' : 'font-bold text-amber-700'}>
+                                            {post.user.name}
+                                        </span>
                                         <small className="ml-2 text-sm text-gray-600">{formatDateTime(post.created_at)}</small>
                                         {post.created_at !== post.updated_at && (
                                             <small className="text-sm text-gray-600"> · edited</small>
@@ -170,14 +204,18 @@ const MessageBoard = () => {
                                     </div>
                                     {(post.user_id === authUserId || authUserId === null) && post.user_id !== 99999 && (
                                         <div className="relative inline-block text-left">
-                                            <button className="focus:outline-none w-6 h-6 text-gray-400 hover:text-gray-600" type="button" onClick={() => toggleDropdown(post.id)}>
+                                            <button
+                                                className="focus:outline-none w-6 h-6 text-gray-400 hover:text-gray-600"
+                                                type="button"
+                                                onClick={() => toggleDropdown(post.id)}
+                                            >
                                                 <EllipsisHorizontalIcon />
                                             </button>
                                             {isDropdownOpen && selectedPostId === post.id && (
                                                 <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                                                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                                         <a
-                                                            href={`/posts/edit/${post.id}`}
+                                                            onClick={() => handleEditPost(post.id)}
                                                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:text-gray-900 w-full text-left"
                                                             role="menuitem"
                                                         >
@@ -196,7 +234,33 @@ const MessageBoard = () => {
                                         </div>
                                     )}
                                 </div>
-                                <p className="flex mt-4 text-lg text-gray-900">{post.content}</p>
+                                {editingPostId === post.id ? (
+                                    <form onSubmit={(event) => handleUpdatePost(event, post.id)}>
+                                        <textarea
+                                            value={message}
+                                            onChange={handleInputChange}
+                                            className="my-4 p-5 block w-full border-gray-300 focus:border-amber-300 focus:ring focus:ring-amber-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                        />
+                                        {errors.message && <div className="text-red-500">{errors.message[0]}</div>}
+                                        <div className="flex mt-4 space-x-4 justify-end">
+                                            <button
+                                                type="submit"
+                                                className="bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded"
+                                            >
+                                                更新
+                                            </button>
+                                            <button
+                                                type="button"
+                                                onClick={handleCancelEdit}
+                                                className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded"
+                                            >
+                                                取消
+                                            </button>
+                                        </div>
+                                    </form>
+                                ) : (
+                                    <p className="flex mt-4 text-lg text-gray-700">{post.content}</p>
+                                )}
                             </div>
                         </div>
                     ))}

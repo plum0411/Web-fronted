@@ -11,7 +11,7 @@ const navigation = [
 ];
 
 function Header() {
-  const navigate = useNavigate();
+  localStorage.getItem('access_token')
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [user, setUser] = useState();
   function classNames(...classes) {
@@ -73,7 +73,6 @@ function Header() {
       handleAnonymousLogin();
       setIsLoggedIn(false);
       console.log('已登出:', response.data);
-      navigate('/');
     } catch (error) {
       console.error('登出失敗:', error.response.data);
     }
