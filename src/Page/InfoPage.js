@@ -4,6 +4,140 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
+const expertises = [
+  '資料文檔統整',
+  '前端Logo設計',
+  '簡報製作',
+  '自我思辨',
+]
+
+const contacts = [
+  {
+    text: "0966-326329",
+    url: "",
+    icon: "./img/phone-call.svg",
+  },
+  {
+    text: "mayble0411@gmail.com",
+    url: "",
+    icon: "./img/email.svg",
+  },
+  {
+    text: "@plum_0411",
+    url: "https://www.instagram.com/plum_0411/",
+    icon: "./img/instagram.svg",
+  },
+  {
+    text: "@張郁梅",
+    url: "",
+    icon: "./img/linkedin.svg",
+  },
+]
+
+const recreations = [
+  {
+    text: "My clay creation",
+    url: "",
+    icon: "./img/img-solid.svg",
+  },
+  {
+    text: "@plum_friends",
+    url: "https://www.instagram.com/plum_friends/",
+    icon: "./img/instagram.svg",
+  },
+  {
+    text: "@abiju_bear_ma",
+    url: "https://www.instagram.com/abiju_bear_ma/",
+    icon: "./img/instagram.svg",
+  },
+  // {
+  //   text: "@melon_seed.word",
+  //   url: "https://www.instagram.com/melon_seed.word/",
+  //   icon: "./img/instagram.svg",
+  // },
+]
+
+const languages = [
+  {
+    text: "HTML5",
+    img_url: "./logo/Html.svg",
+  },
+  {
+    text: "CSS",
+    img_url: "./logo/Css.svg",
+  },
+  {
+    text: "JavaScript",
+    img_url: "./logo/Javascript.svg",
+  },
+  {
+    text: "SQL",
+    img_url: "./logo/Mysql.svg",
+  },
+  {
+    text: "PHP",
+    img_url: "./logo/Php.svg",
+  },
+  {
+    text: "Python",
+    img_url: "./logo/Python.svg",
+  },
+]
+
+const softwares = [
+  {
+    text: "Zbrush",
+    img_url: "./logo/Zbrush.svg",
+  },
+  {
+    text: "3DsMax",
+    img_url: "./logo/3Ds-Max.svg",
+  },
+  {
+    text: "Blender",
+    img_url: "./logo/Blender.svg",
+  },
+  {
+    text: "Photoshop",
+    img_url: "./logo/Photoshop.svg",
+  },
+  {
+    text: "Premiere Pro",
+    img_url: "./logo/Premiere.svg",
+  },
+  {
+    text: "PowerPoint",
+    img_url: "./logo/Powerpoint.svg",
+  },
+  {
+    text: "Canva",
+    img_url: "./logo/Canva.svg",
+  },
+  {
+    text: "Visual Studio Code",
+    img_url: "./logo/Visual-Studio-Code.svg",
+  },
+]
+
+const plugins = [
+  {
+    text: "Tailwind CSS",
+    img_url: "./logo/Tailwindcss.svg",
+  },
+  {
+    text: "ant-Design",
+    img_url: "./logo/Ant-Design.svg",
+  },
+  {
+    text: "Bootstrap",
+    img_url: "./logo/Bootstrap.svg",
+  },
+  {
+    text: "Flowbite",
+    img_url: "./logo/Flowbite.svg",
+  },
+]
+
 function App() {
   return (
     <div className="App font-poppins bg-white dark:bg-stone-900 h-full m-0 p-0 pt-16">
@@ -16,74 +150,39 @@ function App() {
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
 
           <p className="text-2xl my-4 font-black dark:text-white">Expertise</p>
-          <li className="flex items-center text-base my-4 dark:text-white">
-            <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-            資料文檔統整
-          </li>
-          <li className="flex items-center text-base my-4 dark:text-white">
-            <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-            前端Logo設計
-          </li>
-          <li className="flex items-center text-base my-4 dark:text-white">
-            <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-            簡報製作
-          </li>
-          <li className="flex items-center text-base my-4 dark:text-white">
-            <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-            自我思辨
-          </li>
+
+          {expertises.map((expertise) => (
+            <li className="flex items-center text-base my-4 dark:text-white">
+              <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              {expertise}
+            </li>
+          ))}
 
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
 
           <p className="text-2xl my-4 font-black dark:text-white">Contact</p>
 
+          {contacts.map((contact) => (
+            <li className="flex text-sm my-4 dark:text-white items-center">
+              <img src={contact.icon} className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
+              <a href={contact.url}>{contact.text}</a>
+            </li>
+          ))}
 
-          <li className="flex text-sm my-4 dark:text-white items-center">
-            <img src='./img/phone-call.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='phone-call'></img>
-            0966-326329
-          </li>
           {/* <li className="flex text-sm my-4 dark:text-white">
             <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
             台中市西屯區漢翔路127號8F-1
           </li> */}
-          <li className="flex text-sm my-4 dark:text-white items-center">
-            <img src='./img/email.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='email'></img>
-            mayble0411@gmail.com
-          </li>
-          <li className="flex text-sm my-4 dark:text-white items-center">
-            <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
-            <a href='https://www.instagram.com/plum_0411/'>@plum_0411</a>
-          </li>
-          <li className="flex text-sm my-4 dark:text-white items-center">
-            {/* <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg> */}
-            <img src='./img/linkedin.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='linkedin'></img>
-            <a href='https://www.linkedin.com/in/%E9%83%81%E6%A2%85-%E5%BC%B5-768085212/details/certifications/'>@張郁梅</a>
-          </li>
 
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
 
           <p className="text-2xl my-4 font-black dark:text-white">Recreation</p>
-
-          <li className="flex text-sm my-4 dark:text-white items-center">
-            <img src='./img/img-solid.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='solid'></img>
-            {/* <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0"></img> */}
-            <a href='https://photos.app.goo.gl/aCCxXUJyc1jcuykGA'>My clay creation</a>
-          </li>
-
-          <li className="flex text-sm my-4 dark:text-white items-center">
-            <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
-            <a href='https://www.instagram.com/plum_friends/'>@plum_friends</a>
-          </li>
-
-          <li className="flex text-sm my-4 dark:text-white items-center">
-            <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
-            <a href='https://www.instagram.com/abiju_bear_ma/'>@abiju_bear_ma</a>
-          </li>
-
-          {/* <li className="flex text-sm my-4 dark:text-white items-center">
-            <img src='./img/instagram.svg' className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
-            <a href='https://www.instagram.com/melon_seed.word/'>@melon_seed.word</a>
-          </li> */}
+          {recreations.map((recreation) => (
+            <li className="flex text-sm my-4 dark:text-white items-center">
+              <img src={recreation.icon} className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
+              <a href={recreation.url}>{recreation.text}</a>
+            </li>
+          ))}
 
           <hr className="w-full h-1 mx-auto mt-4 mb-8 bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
 
@@ -191,30 +290,12 @@ function App() {
           {/* <hr className="w-full h-0.5 mx-auto bg-stone-200 border-0 rounded md:mb-10 dark:bg-stone-800"></hr> */}
 
           <div className='sm:text-lg sm:mb-0 mb-8 text-sm grid grid-cols-3 gap-4'>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_html.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">HTML5</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_css.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">CSS</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_javascript.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">JavaScript</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_mysql.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">SQL</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_php.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">PHP</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_python.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Python</a>
-            </div>
+            {languages.map((language) => (
+              <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+                <img src={language.img_url} className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+                <a className="dark:text-white sm:contents hidden">{language.text}</a>
+              </div>
+            ))}
           </div>
 
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
@@ -222,42 +303,13 @@ function App() {
           {/* <hr className="w-full h-0.5 mx-auto bg-stone-200 border-0 rounded md:mb-10 dark:bg-stone-800"></hr> */}
 
           <div className='sm:text-lg sm:mb-0 mb-8 text-sm grid grid-cols-3 gap-4'>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_zbrush.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Zbrush</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_3Ds-max.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">3DsMax</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_blender.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Blender</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_photoshop.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Photoshop</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_illustrator.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Illustrator</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_premiere.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Premiere Pro</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_powerpoint.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">PowerPoint</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_canva.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Canva</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_visual-studio-code.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Visual Studio Code</a>
-            </div>
+
+            {softwares.map((software) => (
+              <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+                <img src={software.img_url} className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+                <a className="dark:text-white sm:contents hidden">{software.text}</a>
+              </div>
+            ))}
           </div>
 
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
@@ -265,22 +317,12 @@ function App() {
           {/* <hr className="w-full h-0.5 mx-auto bg-stone-200 border-0 rounded md:mb-10 dark:bg-stone-800"></hr> */}
 
           <div className='sm:text-lg sm:mb-0 mb-8 text-sm grid grid-cols-3 gap-4'>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_tailwindcss.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">TailwindCSS</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_ant-design.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">ant-Design</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_bootstrap.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">Bootstrap</a>
-            </div>
-            <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
-              <img src='./logo/logos_FlowBite.svg' className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
-              <a className="dark:text-white sm:contents hidden">FlowBite</a>
-            </div>
+            {plugins.map((plugin) => (
+              <div className='sm:grid sm:grid-cols-3 grid-cols-1 items-center'>
+                <img src={plugin.img_url} className='transition-all duration-300 cursor-pointer filter scale-100 sepia hover:sepia-0 hover:scale-95' alt='HTML5'></img>
+                <a className="dark:text-white sm:contents hidden">{plugin.text}</a>
+              </div>
+            ))}
           </div>
         </div>
       </div>
