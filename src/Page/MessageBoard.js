@@ -6,6 +6,7 @@ import Header from '../component/Header';
 const MessageBoard = () => {
     const [posts, setPosts] = useState([]);
     const [message, setMessage] = useState('');
+    const [editMessage, setEditMessage] = useState('');
     const [errors, setErrors] = useState([]);
     const [authUserId, setAuthUserId] = useState(null);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -46,6 +47,21 @@ const MessageBoard = () => {
         }
     };
 
+    const getOnePosts = async (postId) => {
+        try {
+            const url = `http://localhost:8000/api/posts/${postId}`;
+            const response = await axios.get(url, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+                },
+            });
+            setEditMessage(response.data.data.post.content);
+            console.log("editMessage", editMessage);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     const formatDateTime = (dateTimeString) => {
         const dateTime = new Date(dateTimeString);
         const options = {
@@ -60,6 +76,10 @@ const MessageBoard = () => {
 
     const handleInputChange = (event) => {
         setMessage(event.target.value);
+    };
+
+    const handleEditChange = (event) => {
+        setEditMessage(event.target.value);
     };
 
     const handleFormSubmit = (event) => {
@@ -126,23 +146,16 @@ const MessageBoard = () => {
     const toggleDropdown = (postId) => {
         setIsDropdownOpen(!isDropdownOpen);
         setSelectedPostId(postId);
-    };
-
-    const handleEditPost = (postId) => {
-        setEditingPostId(postId);
-    };
-
-    const handleCancelEdit = () => {
-        setEditingPostId(null);
+        getOnePosts(postId);
     };
 
     const handleUpdatePost = (event, postId) => {
         event.preventDefault();
-
+        const url = `http://localhost:8000/api/posts/${postId}`;
         axios
             .put(
-                `http://localhost:8000/api/posts/${postId}`,
-                { content: message },
+                url,
+                { content: editMessage },
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem('access_token')}`,
@@ -150,9 +163,8 @@ const MessageBoard = () => {
                 }
             )
             .then((response) => {
-                setMessage('');
-                setErrors([]);
                 setEditingPostId(null);
+                setErrors([]);
                 getPosts();
             })
             .catch((error) => {
@@ -166,8 +178,11 @@ const MessageBoard = () => {
 
     return (
         <div className="App font-poppins bg-white dark:bg-stone-900 h-full m-0 p-0 pt-16">
+            <div className='flex bg-yellow-600 w-full h-44 justify-center items-center'>
+                <div className='text-4xl text-white font-bold'>留言一下</div>
+            </div>
             <Header />
-            <div className="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
+            <div className="max-w-2xl mx-auto p-4 sm:p-6 lg:pt-16">
                 <form onSubmit={handleFormSubmit}>
                     <textarea
                         id="message"
@@ -215,7 +230,7 @@ const MessageBoard = () => {
                                                 <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                                                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                                         <a
-                                                            onClick={() => handleEditPost(post.id)}
+                                                            onClick={() => setEditingPostId(post.id)}
                                                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:text-gray-900 w-full text-left"
                                                             role="menuitem"
                                                         >
@@ -237,8 +252,8 @@ const MessageBoard = () => {
                                 {editingPostId === post.id ? (
                                     <form onSubmit={(event) => handleUpdatePost(event, post.id)}>
                                         <textarea
-                                            value={message}
-                                            onChange={handleInputChange}
+                                            value={editMessage}
+                                            onChange={handleEditChange}
                                             className="my-4 p-5 block w-full border-gray-300 focus:border-amber-300 focus:ring focus:ring-amber-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         />
                                         {errors.message && <div className="text-red-500">{errors.message[0]}</div>}
@@ -251,7 +266,7 @@ const MessageBoard = () => {
                                             </button>
                                             <button
                                                 type="button"
-                                                onClick={handleCancelEdit}
+                                                onClick={setEditingPostId(null)}
                                                 className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded"
                                             >
                                                 取消

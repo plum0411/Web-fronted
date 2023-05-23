@@ -36,6 +36,7 @@ function Header() {
       localStorage.setItem('user_data', response.data);
       console.log('匿名:', response.data);
       console.log('匿名token:', localStorage.getItem('access_token'));
+      setIsLoggedIn(false);
     } catch (error) {
       console.error('error', error.response.data);
     }
@@ -79,7 +80,7 @@ function Header() {
   };
 
   useEffect(() => {
-    handleAnonymousLogin();
+    // handleAnonymousLogin();
     getMe();
   }, []);
 
@@ -136,7 +137,7 @@ function Header() {
                 </div>
                 {isLoggedIn && user.id != 99999 ? (
                   <div className="flex justify-end space-x-2 hover:animate-swing hover:bg-red-500/50 py-2 px-3 rounded transition-colors">
-                    <a onClick={handleLogout} className="text-sm font-semibold leading-6 dark:text-white text-amber-600 cursor-pointer">
+                    <a onClick={handleAnonymousLogin} className="text-sm font-semibold leading-6 dark:text-white text-amber-600 cursor-pointer">
                       {user.name}
                     </a>
                     <div className='w-6 h-6 text-white'>
