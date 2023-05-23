@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ChatBubbleOvalLeftEllipsisIcon, EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
 import Header from '../component/Header';
-
+import { request, config } from '../api/setting';
+import { formatDateTime } from '../api/api';
 const MessageBoard = () => {
     const [posts, setPosts] = useState([]);
     const [message, setMessage] = useState('');
@@ -22,11 +23,7 @@ const MessageBoard = () => {
 
     const getMe = async () => {
         try {
-            const response = await axios.post('http://localhost:8000/api/auth/me', null, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            });
+            const response = await axios.post('http://localhost:8000/api/auth/me', null, config);
             setUser(response.data);
             console.log('使用者資料：', response.data);
         } catch (error) {
@@ -36,11 +33,7 @@ const MessageBoard = () => {
 
     const getPosts = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/api/posts/', {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            });
+            const response = await axios.get('http://localhost:8000/api/posts/', config);
             setPosts(response.data.data.posts);
         } catch (error) {
             console.error(error);
@@ -50,28 +43,12 @@ const MessageBoard = () => {
     const getOnePosts = async (postId) => {
         try {
             const url = `http://localhost:8000/api/posts/${postId}`;
-            const response = await axios.get(url, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            });
+            const response = await axios.get(url, config);
             setEditMessage(response.data.data.post.content);
             console.log("editMessage", editMessage);
         } catch (error) {
             console.error(error);
         }
-    };
-
-    const formatDateTime = (dateTimeString) => {
-        const dateTime = new Date(dateTimeString);
-        const options = {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric',
-            hour: 'numeric',
-            minute: 'numeric',
-        };
-        return dateTime.toLocaleString('ch-TW', options);
     };
 
     const handleInputChange = (event) => {
@@ -90,12 +67,7 @@ const MessageBoard = () => {
         axios
             .post(
                 url,
-                { user_id, content: message },
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                    },
-                }
+                { user_id, content: message }, config
             )
             .then((response) => {
                 setMessage('');
@@ -115,11 +87,7 @@ const MessageBoard = () => {
         const url = `http://localhost:8000/api/posts/${postId}`;
 
         axios
-            .delete(url, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                },
-            })
+            .delete(url, config)
             .then((response) => {
                 getPosts();
             })
@@ -129,11 +97,7 @@ const MessageBoard = () => {
     };
 
     const fetchAuthUserId = () => {
-        fetch('http://localhost:8000/api/user', {
-            headers: {
-                Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-            },
-        })
+        fetch('http://localhost:8000/api/user', config)
             .then((response) => response.json())
             .then((data) => {
                 setAuthUserId(data.id);
@@ -155,12 +119,7 @@ const MessageBoard = () => {
         axios
             .put(
                 url,
-                { content: editMessage },
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-                    },
-                }
+                { content: editMessage }, config
             )
             .then((response) => {
                 setEditingPostId(null);
@@ -266,7 +225,7 @@ const MessageBoard = () => {
                                             </button>
                                             <button
                                                 type="button"
-                                                onClick={setEditingPostId(null)}
+                                                onClick={setEditingPostId}
                                                 className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded"
                                             >
                                                 取消

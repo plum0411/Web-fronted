@@ -4,21 +4,24 @@ import axios from 'axios';
 import { request, config, } from './setting'
 const API_BASE_URL = 'http://localhost:8000/api';
 
-const api = axios.create({
-    baseURL: API_BASE_URL,
-});
-
-export const login = async (username, password) => {
-    try {
-        const response = await api.post('/login', {
-            username,
-            password,
-        });
-        return response.data;
-    } catch (error) {
-        throw error.response.data;
+export const login = (username, password) => request.post("/login",
+    {
+        username,
+        password,
     }
-};
+    , config);
+
+// export const login = async (username, password) => {
+//     try {
+//         const response = await api.post('/login', {
+//             username,
+//             password,
+//         });
+//         return response.data;
+//     } catch (error) {
+//         throw error.response.data;
+//     }
+// };
 
 export const getPosts = async () => {
     try {
