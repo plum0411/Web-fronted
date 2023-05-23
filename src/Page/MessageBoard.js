@@ -154,7 +154,7 @@ const MessageBoard = () => {
                         placeholder="打下你想說的話 ..."
                         value={message}
                         onChange={handleInputChange}
-                        className="p-5 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                        className="p-5 block w-full border-stone-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                     />
                     {errors.message && <div className="text-red-500">{errors.message[0]}</div>}
                     <button
@@ -167,24 +167,24 @@ const MessageBoard = () => {
                 <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
                     {posts.map((post) => (
                         <div key={post.id} className="p-6 flex space-x-2">
-                            <div className="w-6 h-6 text-amber-700">
+                            <div className={post.user_id === anonymousId ? 'h-6 w-6 text-stone-500' : 'h-6 w-6 text-amber-600'}>
                                 <ChatBubbleOvalLeftEllipsisIcon />
                             </div>
                             <div className="flex-1">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <span className={post.user_id === anonymousId ? 'font-bold text-gray-700' : 'font-bold text-amber-700'}>
+                                        <span className={post.user_id === anonymousId ? 'font-bold text-stone-700' : 'font-bold text-amber-700'}>
                                             {post.user.name}
                                         </span>
-                                        <small className="ml-2 text-sm text-gray-600">{formatDateTime(post.created_at)}</small>
+                                        <small className="ml-2 text-sm text-stone-600">{formatDateTime(post.created_at)}</small>
                                         {post.created_at !== post.updated_at && (
-                                            <small className="text-sm text-gray-600"> · edited</small>
+                                            <small className="text-sm text-stone-600"> · edited</small>
                                         )}
                                     </div>
                                     {(post.user_id === authUserId || authUserId === null) && post.user_id !== anonymousId && (
                                         <div className="relative inline-block text-left">
                                             <button
-                                                className="focus:outline-none w-6 h-6 text-gray-400 hover:text-gray-600"
+                                                className="focus:outline-none w-6 h-6 text-stone-400 hover:text-stone-600"
                                                 type="button"
                                                 onClick={() => toggleDropdown(post.id)}
                                             >
@@ -195,7 +195,7 @@ const MessageBoard = () => {
                                                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                                         <a
                                                             onClick={() => setEditingPostId(post.id)}
-                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:text-gray-900 w-full text-left"
+                                                            className="block px-4 py-2 text-sm text-stone-700 hover:bg-stone-200 hover:text-stone-900 w-full text-left"
                                                             role="menuitem"
                                                         >
                                                             編輯
@@ -218,7 +218,7 @@ const MessageBoard = () => {
                                         <textarea
                                             value={editMessage}
                                             onChange={handleEditChange}
-                                            className="my-4 p-5 block w-full border-gray-300 focus:border-amber-300 focus:ring focus:ring-amber-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                                            className="my-4 p-5 block w-full border-stone-300 focus:border-amber-300 focus:ring focus:ring-amber-200 focus:ring-opacity-50 rounded-md shadow-sm"
                                         />
                                         {errors.message && <div className="text-red-500">{errors.message[0]}</div>}
                                         <div className="flex mt-4 space-x-4 justify-end">
@@ -231,14 +231,14 @@ const MessageBoard = () => {
                                             <button
                                                 type="button"
                                                 onClick={setEditingPostId}
-                                                className="bg-gray-500 hover:bg-gray-400 text-white py-2 px-4 rounded"
+                                                className="bg-stone-500 hover:bg-stone-400 text-white py-2 px-4 rounded"
                                             >
                                                 取消
                                             </button>
                                         </div>
                                     </form>
                                 ) : (
-                                    <p className="flex mt-4 text-lg text-gray-700">{post.content}</p>
+                                    <p className="flex mt-4 text-lg text-stone-700">{post.content}</p>
                                 )}
                             </div>
                         </div>
