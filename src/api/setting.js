@@ -13,7 +13,7 @@ const config = {
     }
 }
 
-const anonymousId = 999999
+const anonymousId = 99999
 
 export {
     request,
