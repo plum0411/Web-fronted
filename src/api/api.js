@@ -25,7 +25,7 @@ export const login = (username, password) => request.post("/login",
 
 export const getPosts = async () => {
     try {
-        const response = await api.get('/posts');
+        const response = await request.get('/posts');
         return response.data;
     } catch (error) {
         throw error.response.data;
@@ -34,7 +34,7 @@ export const getPosts = async () => {
 
 export const createPost = async (content) => {
     try {
-        const response = await api.post('/posts', {
+        const response = await request.post('/posts', {
             content,
         });
         return response.data;
@@ -45,7 +45,7 @@ export const createPost = async (content) => {
 
 export const deletePost = async (postId) => {
     try {
-        const response = await api.delete(`/posts/${postId}`);
+        const response = await request.delete(`/posts/${postId}`);
         return response.data;
     } catch (error) {
         throw error.response.data;
@@ -54,7 +54,7 @@ export const deletePost = async (postId) => {
 
 export const updatePost = async (postId, content) => {
     try {
-        const response = await api.put(`/posts/${postId}`, {
+        const response = await request.put(`/posts/${postId}`, {
             content,
         });
         return response.data;
@@ -65,7 +65,7 @@ export const updatePost = async (postId, content) => {
 
 export const getOnePost = async (postId) => {
     try {
-        const response = await api.get(`/posts/${postId}`);
+        const response = await request.get(`/posts/${postId}`);
         return response.data;
     } catch (error) {
         throw error.response.data;
