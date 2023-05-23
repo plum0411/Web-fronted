@@ -86,7 +86,7 @@ function RegisterForm() {
         <form onSubmit={handleSubmit}>
           {/* Name Address */}
           <div>
-            <label htmlFor="name" className="text-gray-700 dark:text-white flex justify-start items-start">
+            <label htmlFor="name" className="text-stone-700 dark:text-white flex justify-start items-start">
               Name
             </label>
             <input
@@ -104,7 +104,7 @@ function RegisterForm() {
 
           {/* Email Address */}
           <div className="mt-4">
-            <label htmlFor="email" className="text-gray-700 dark:text-white flex justify-start items-start">
+            <label htmlFor="email" className="text-stone-700 dark:text-white flex justify-start items-start">
               Email
             </label>
             <input
@@ -122,7 +122,7 @@ function RegisterForm() {
 
           {/* Password */}
           <div className="mt-4">
-            <label htmlFor="password" className="text-gray-700 dark:text-white flex justify-start items-start">
+            <label htmlFor="password" className="text-stone-700 dark:text-white flex justify-start items-start">
               Password
             </label>
             <input
@@ -139,7 +139,7 @@ function RegisterForm() {
 
           {/* Password */}
           <div className="mt-4">
-            <label htmlFor="password_confirmation" className="text-gray-700 dark:text-white flex justify-start items-start">
+            <label htmlFor="password_confirmation" className="text-stone-700 dark:text-white flex justify-start items-start">
               Confirm Password
             </label>
             <input
@@ -159,13 +159,13 @@ function RegisterForm() {
             {/* 在 React 中，你可以使用 Link 元件來處理路由連結 */}
             {/* {<Link
               to="/password/request"
-              className= "underline text-sm dark:text-white dark:hover:text-gray-300 text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+              className= "underline text-sm dark:text-white dark:hover:text-stone-300 text-stone-600 hover:text-stone-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
             >
               Forgot your password?
             </Link>} */}
             <a
               href="/login"
-              className="underline text-sm dark:text-gray-600 dark:hover:text-gray-400 text-gray-600 hover:text-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+              className="underline text-sm dark:text-stone-600 dark:hover:text-stone-400 text-stone-600 hover:text-stone-700 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
             >
               Already have an account?
             </a>
