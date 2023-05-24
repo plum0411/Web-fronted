@@ -32,7 +32,7 @@ function App() {
                 哈嘍ヾ(๑•̀∀•́๑)ツ，我是張郁梅
               </h1>
               <p className="mt-4 sm:text-xl text-base text-stone-500 dark:text-yellow-600 text-left">
-                這是我做的自我介紹網站，瀏覽看看來認識我吧！
+                這是我的履歷網站，瀏覽看看來認識我吧！
               </p>
             </div>
             <div>
@@ -99,7 +99,7 @@ function App() {
                   </div>
                 </div>
                 <button className="z-10 sm:m-0 mx-28 my-36 justify-center items-center inline-block rounded-md border border-transparent bg-yellow-400 py-3 px-8 text-center font-medium hover:bg-yellow-500">
-                  <a href="./info">
+                  <a href="/info">
                     開始吧！
                   </a>
                 </button>
