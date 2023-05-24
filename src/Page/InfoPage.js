@@ -1,4 +1,5 @@
 import Header from '../component/Header';
+import ListItem from '../component/ListItem';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -106,6 +107,10 @@ const softwares = [
     img_url: "./logo/Premiere.svg",
   },
   {
+    text: "Illustrator",
+    img_url: "./logo/Illustrator.svg",
+  },
+  {
     text: "PowerPoint",
     img_url: "./logo/Powerpoint.svg",
   },
@@ -142,12 +147,12 @@ function App() {
   return (
     <div className="App font-poppins bg-white dark:bg-stone-900 h-full m-0 p-0 pt-16">
       <Header />
-      <div className="grid sm:grid-cols-6 grid-cols-1 p-12 sm:p-24 relative overflow-hidden bg-white dark:bg-stone-900">
+      <div className="grid sm:grid-cols-5 grid-cols-1 p-8 sm:p-24 relative overflow-hidden bg-white dark:bg-stone-900">
         <div className='col-span-1'>
           <div className='flex justify-center'>
             <img className="rounded-full border-8 border-stone-400 mb-4 sm:w-auto w-40 justify-center" src="./img/me.jpg" alt="description" />
           </div>
-          <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
+          <hr className="w-full h-1 mx-auto bg-stone-200 border-0 rounded md:my-10 dark:bg-stone-800"></hr>
 
           <p className="text-2xl my-4 font-black dark:text-white">Expertise</p>
 
@@ -158,40 +163,29 @@ function App() {
             </li>
           ))}
 
-          <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
+          <hr className="w-full h-1 mx-auto bg-stone-200 border-0 rounded md:my-10 dark:bg-stone-800"></hr>
 
           <p className="text-2xl my-4 font-black dark:text-white">Contact</p>
 
-          {contacts.map((contact) => (
-            <li className="flex text-sm my-4 dark:text-white items-center">
-              <img src={contact.icon} className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
-              <a href={contact.url}>{contact.text}</a>
-            </li>
-          ))}
-
+          <ListItem items={contacts} />
           {/* <li className="flex text-sm my-4 dark:text-white">
             <svg className="w-4 h-4 mr-1.5 text-green-500 dark:text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
             台中市西屯區漢翔路127號8F-1
           </li> */}
 
-          <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
+          <hr className="w-full h-1 mx-auto bg-stone-200 border-0 rounded md:my-10 dark:bg-stone-800"></hr>
 
           <p className="text-2xl my-4 font-black dark:text-white">Recreation</p>
-          {recreations.map((recreation) => (
-            <li className="flex text-sm my-4 dark:text-white items-center">
-              <img src={recreation.icon} className="w-4 h-4 mr-1.5 flex-shrink-0" alt='instagram'></img>
-              <a href={recreation.url}>{recreation.text}</a>
-            </li>
-          ))}
 
-          <hr className="w-full h-1 mx-auto mt-4 mb-8 bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
+          <ListItem items={recreations} />
+          <hr className="w-full h-1 mx-auto mt-4 mb-8 bg-stone-200 border-0 rounded md:my-10 dark:bg-stone-800"></hr>
 
         </div>
 
 
-        <div className="sm:col-span-5 col-span-1 text-left sm:pl-24">
-          <p className="text-4xl font-black dark:text-white">張郁梅</p>
-          <p className="text-lg my-4 dark:text-white">ＳＥＬＦ　ＩＮＴＲＯ</p>
+        <div className="sm:col-span-4 col-span-1 text-left sm:pl-24">
+          <p className="sm:text-4xl text-2xl font-black dark:text-white">張郁梅</p>
+          <p className="sm:text-lg my-4 dark:text-white">ＳＥＬＦ　ＩＮＴＲＯ</p>
           <p className="sm:text-base text-sm my-4 dark:text-white">
             我是張郁梅，國中畢業後就讀於國立台中科技大學的資訊應用菁英班五專部，
             在求學過程中學習了各項語言(Kotlin、Java、C等)的程式設計基礎以及各式程式開發工具，
@@ -200,7 +194,7 @@ function App() {
             也幫助我再專案中從不同視角優化使用者體驗並更好的與合作夥伴溝通。</p>
           <hr className="w-full h-1 mx-auto bg-amber-200 border-0 rounded md:my-10 dark:bg-yellow-600"></hr>
 
-          <p className="text-3xl my-4 font-black dark:text-white">Education</p>
+          <p className="sm:text-3xl text-2xl my-4 font-black dark:text-white">Education</p>
           {/* <hr className="w-full h-0.5 mx-auto bg-stone-200 border-0 rounded md:mb-10 dark:bg-stone-800"></hr> */}
           <div className='grid sm:grid-cols-2 mt-8 justify-center items-center'>
             <img src="./img/ia.webp" className='sm:w-48 w-36 items-center' alt='ia'></img>
