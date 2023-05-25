@@ -1,15 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import CarouselItems from './CarouselItems';
 
 const ProjectBlock = ({ data }) => {
   return (
-    <div className='grid grid-cols-2 sm:grid-cols-7 gap-x-4 gap-y-24'>
+    <div className='grid grid-cols-2 sm:grid-cols-7 gap-x-4 sm:gap-y-24 gap-y-8'>
       {data.map((project, index) => (
         <>
           <div key={index} className="my-0 ml-6 col-span-2 sm:col-span-4">
             <div className="absolute sm:w-40 sm:h-40 h-16 w-16 bg-stone-200 rounded-full mt-2 sm:-left-20 -left-8 border border-white dark:border-stone-900 dark:bg-stone-700">
-              <img src={project.logo} className='h-full w-full' alt='record' />
+              <img src={project.logo} className='h-full w-full rounded-full ring-8 dark:ring-white/25 ring-black/25' alt='record' />
             </div>
             <div className='sm:ml-28 ml-8'>
               <h3 className="flex items-center mb-1 sm:text-lg text-sm font-semibold text-stone-900 dark:text-white">
@@ -46,7 +45,7 @@ const ProjectBlock = ({ data }) => {
               {/* )} */}
             </div>
           </div>
-          <div className="col-span-3 h-full">
+          <div className="col-span-3 h-full pb-8">
             <CarouselItems carouselItems={project.images} />
           </div>
           {/* Render images based on data */}
