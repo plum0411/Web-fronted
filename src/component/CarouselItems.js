@@ -47,7 +47,7 @@ const CarouselItems = ({ carouselItems }) => {
   }
 
   return (
-    <div className="relative h-full flex items-center justify-center">
+    <div className="relative h-64 sm:h-full flex items-center justify-center">
       {isImageModalOpen ? (
         <div
           className="fixed transition-all duration-300 top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-75 z-50"
@@ -92,7 +92,7 @@ const CarouselItems = ({ carouselItems }) => {
           {carouselItems.map((image, index) => (
             <img
               key={index}
-              className={`absolute flex justify-center rounded-lg h-auto max-h-44 transform transition-transform duration-300 ${
+              className={`absolute flex justify-center rounded-lg h-auto max-h-52 transform transition-transform duration-300 ${
                 index === activeIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
               }`}
               src={image}
@@ -105,7 +105,7 @@ const CarouselItems = ({ carouselItems }) => {
               <li
                 key={index}
                 className={`w-1 h-1 rounded-full cursor-pointer ${
-                  index === activeIndex ? 'bg-white' : 'bg-stone-300'
+                  index === activeIndex ? 'bg-white' : 'bg-stone-500'
                 }`}
                 onClick={() => handleClick(index)}
               ></li>
