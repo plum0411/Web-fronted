@@ -59,7 +59,7 @@ const projects = [
         buttonLink: "https://gitlab.com/trunk-yo/raspberry_frontend",
       },
     ],
-    logo: "./img/record.webp",
+    logo: "./img/record.png",
     images: [
       "./img/record-rect.webp",
     ],
@@ -87,7 +87,7 @@ const projects = [
         buttonLink: "https://www.instagram.com/plum_friends/",
       },
     ],
-    logo: "./img/mouji.webp",
+    logo: "./img/mouji.png",
     images: [
       "./img/mouji-rect3.webp",
       "./img/mouji-rect2.webp",
@@ -137,9 +137,9 @@ const projects = [
         "buttonLink": "https://drive.google.com/drive/folders/1BtX68XOitvJz0C7AUZgP5H4vHe0UNbPZ?usp=share_link"
       }
     ],
-    logo: "./img/rapputappu.webp",
+    logo: "./img/rapputappu.png",
     images: [
-      "./img/rapputappu-rect.webp"
+      "./img/rapputappu-rect.webp",
     ],
     width: "175%",
     imageClass: [
@@ -160,7 +160,7 @@ const projects = [
         "buttonLink": "https://drive.google.com/drive/folders/1GoIMOxerT3X8QEwnDKNv_ca5_DywtOV7?usp=share_link"
       }
     ],
-    logo: "./img/bear-round.webp",
+    logo: "./img/bear-rect.webp",
     images: [
       "./img/chinese-rect.webp"
     ],
