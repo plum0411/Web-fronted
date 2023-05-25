@@ -1,7 +1,6 @@
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon, ArrowRightOnRectangleIcon, ArrowRightIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 const navigation = [
@@ -14,9 +13,6 @@ function Header() {
   localStorage.getItem('access_token')
   const [isLoggedIn, setIsLoggedIn] = useState();
   const [user, setUser] = useState();
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-  }
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
   }
@@ -135,7 +131,7 @@ function Header() {
                     </div>
                   </div>
                 </div>
-                {isLoggedIn && user.id != 99999 ? (
+                {isLoggedIn && user.id !==99999 ? (
                   <div className="flex justify-end space-x-2 hover:animate-swing hover:bg-red-500/50 py-2 px-3 rounded transition-colors">
                     <a onClick={handleAnonymousLogin} className="text-sm font-semibold leading-6 dark:text-white text-amber-600 cursor-pointer">
                       {user.name}
