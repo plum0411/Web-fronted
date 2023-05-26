@@ -30,7 +30,7 @@ const projects = [
         buttonLink: "https://github.com/monosparta/m202301-pwa.git",
       },
     ],
-    logo: "./img/pet's nest.svg",
+    logo: "./img/petNest.svg",
     images: [
       "./img/pet's nest.png",
     ],
@@ -185,7 +185,7 @@ function App() {
 
           <div className="relative border-l border-stone-200 dark:border-stone-700 sm:ml-32 ml-4 col-span-6">
             <ProjectBlock data={projects} />
-            <div className='grid grid-cols-2 sm:grid-cols-7'>
+            {/* <div className='grid grid-cols-2 sm:grid-cols-7'>
               <div className="sm:mb-24 my-0 ml-6 col-span-2 sm:col-span-4">
                 <div className="absolute sm:w-40 sm:h-40 h-16 w-16 bg-stone-200 rounded-full mt-2 sm:-left-20 -left-8 border border-white dark:border-stone-900 dark:bg-stone-700">
                   <img src="./img/pet's nest.svg" className='h-full w-full' alt='record'></img>
@@ -289,7 +289,7 @@ function App() {
                 </div>
               </div>
 
-              {/* <img className="h-auto sm:max-w-sm max-w-[175%] mt-4 mb-16 sm:mt-0 sm:mb-0 mx-8 rounded-lg col-span-1" src="./img/mouji-rect.webp" alt="description" /> */}
+              <img className="h-auto sm:max-w-sm max-w-[175%] mt-4 mb-16 sm:mt-0 sm:mb-0 mx-8 rounded-lg col-span-1" src="./img/mouji-rect.webp" alt="description" />
 
               <div className='grid grid-cols-2 gap-4'>
                 <img className="sm:h-64 h-36 sm:max-w-sm max-w-[175%] mt-4 mb-16 sm:mt-12 sm:mb-12 mx-8 rounded-lg" src="./img/mouji-rect3.webp" alt="description" />
@@ -387,7 +387,7 @@ function App() {
                 </div>
               </div>
               <img className="h-auto sm:max-w-sm max-w-[175%] mt-4 mb-16 sm:mt-0 sm:mb-0 mx-8 rounded-lg col-span-1" src="./img/chinese-rect.webp" alt="description" />
-            </div>
+            </div> */}
 
           </div>
 
