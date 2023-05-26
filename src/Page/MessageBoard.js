@@ -52,8 +52,16 @@ const MessageBoard = () => {
     };
 
     const handleInputChange = (event) => {
-        setMessage(event.target.value);
+        const value = event.target.value;
+        setMessage(value);
+
+        if (value.length > 250) {
+            setErrors('字數上限為250字');
+        } else {
+            setErrors('');
+        }
     };
+
 
     const handleEditChange = (event) => {
         setEditMessage(event.target.value);
@@ -61,6 +69,9 @@ const MessageBoard = () => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+        if (errors) {
+            return; // 防止提交
+        }
         const user_id = authUserId || anonymousId;
         const url = `http://localhost:8000/api/posts/`;
 
@@ -156,13 +167,16 @@ const MessageBoard = () => {
                         onChange={handleInputChange}
                         className="p-5 block w-full border-stone-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                     />
-                    {errors.message && <div className="text-red-500">{errors.message[0]}</div>}
-                    <button
-                        type="submit"
-                        className="flex mt-4 bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded"
-                    >
-                        發文
-                    </button>
+                    {/* {errors.message && <div className="text-red-500">{errors.message[0]}</div>} */}
+                    <div className='flex justify-between'>
+                        <button
+                            type="submit"
+                            className="flex mt-4 bg-amber-600 hover:bg-amber-700 text-white py-2 px-4 rounded"
+                        >
+                            發文
+                        </button>
+                        {errors && <div className="text-red-500 transition text-right p-2">※{errors}</div>}
+                    </div>
                 </form>
                 <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
                     {posts.map((post) => (
