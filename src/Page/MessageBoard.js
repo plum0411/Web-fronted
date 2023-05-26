@@ -56,7 +56,7 @@ const MessageBoard = () => {
         setMessage(value);
 
         if (value.length > 250) {
-            setErrors('字數上限為250字');
+            setErrors('※字數上限為250字');
         } else {
             setErrors('');
         }
@@ -175,7 +175,7 @@ const MessageBoard = () => {
                         >
                             發文
                         </button>
-                        {errors && <div className="text-red-500 transition text-right p-2">※{errors}</div>}
+                        {errors && <div className="text-red-500 transition text-right p-2">{errors}</div>}
                     </div>
                 </form>
                 <div className="mt-6 bg-white shadow-sm rounded-lg divide-y">
